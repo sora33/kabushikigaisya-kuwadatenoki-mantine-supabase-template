@@ -1,1 +1,1 @@
-export * from './mantine-date-provider'
+export * from "./mantine-date-provider";

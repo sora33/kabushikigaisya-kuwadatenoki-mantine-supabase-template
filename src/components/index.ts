@@ -1,4 +1,4 @@
 // プロダクト共通のコンポーネント
 
-export * from './modules'
-export * from './ui'
+export * from "./modules";
+export * from "./ui";
