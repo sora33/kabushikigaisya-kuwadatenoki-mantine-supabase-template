@@ -22,21 +22,7 @@ export const signUpAction = async (data: SignUpFormSchema) => {
 		options: {
 			emailRedirectTo: `${origin}/auth/callback`,
 			data: {
-				agency: data.agency,
-				agency_kana: data.agencyKana,
 				name: data.name,
-				name_kana: data.nameKana,
-				position: data.position,
-				postal_code: data.postalCode,
-				prefecture: data.prefecture,
-				address: data.address,
-				phone_number: data.phoneNumber,
-				contact_phone_number: data.contactPhoneNumber,
-				contact_fax_number: data.contactFaxNumber,
-				...(data.relatedUserId ? { related_user_id: data.relatedUserId } : {}), // 関係者のID
-				is_organizer: data.isOrganizer,
-				is_lecturer: data.isLecturer,
-				is_kankijuku: data.isKankijuku,
 			},
 		},
 	});
