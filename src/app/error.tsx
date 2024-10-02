@@ -19,38 +19,36 @@ export default function ErrorComponent({
 	reset: () => void;
 }) {
 	return (
-		<>
-			<Container size="sm" pb="6rem">
-				<Stack gap="sm" flex="1" pt="md">
-					<Flex
-						align="center"
-						justify="center"
-						direction="column"
-						gap="sm"
-						h="60vh"
-					>
-						<IconMoodSad color="gray" />
-						<Title order={2}>サーバーエラーになりました。</Title>
-						<Paper withBorder p="md" w="240px">
-							<Text c="red" size="sm" fw="bold">
-								エラーメッセージ
-							</Text>
-							<Text c="red" size="sm">
-								{error.message}
-							</Text>
-						</Paper>
-						<Text c="gray" size="sm">
-							申し訳ございません。
-							<br />
-							数分後に再度操作を行ってください。
+		<Container size="sm" pb="6rem">
+			<Stack gap="sm" flex="1" pt="md">
+				<Flex
+					align="center"
+					justify="center"
+					direction="column"
+					gap="sm"
+					h="60vh"
+				>
+					<IconMoodSad color="gray" />
+					<Title order={2}>サーバーエラーになりました。</Title>
+					<Paper withBorder p="md" w="240px">
+						<Text c="red" size="sm" fw="bold">
+							エラーメッセージ
 						</Text>
-						<Flex gap="md">
-							<RouterBakcButton />
-							<Button onClick={reset}>リロード</Button>
-						</Flex>
+						<Text c="red" size="sm">
+							{error.message}
+						</Text>
+					</Paper>
+					<Text c="gray" size="sm">
+						申し訳ございません。
+						<br />
+						数分後に再度操作を行ってください。
+					</Text>
+					<Flex gap="md">
+						<RouterBakcButton />
+						<Button onClick={reset}>リロード</Button>
 					</Flex>
-				</Stack>
-			</Container>
-		</>
+				</Flex>
+			</Stack>
+		</Container>
 	);
 }

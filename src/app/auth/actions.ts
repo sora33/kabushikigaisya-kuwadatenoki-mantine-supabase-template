@@ -6,66 +6,66 @@ import { createServerClient } from "~/lib/supabase";
 import { supabaseAuthErrorCodeToJapaneseMessage } from "~/lib/supabase/error-code";
 import { encodedRedirect } from "~/utils/encoded-redirect";
 
-export const signUpAction = async (formData: FormData) => {
-	const firstName = formData.get("firstName")?.toString();
-	const email = formData.get("email")?.toString();
-	const password = formData.get("password")?.toString();
-	const supabase = createServerClient();
-	const origin = headers().get("origin");
+// export const signUpAction = async (formData: FormData) => {
+// 	const firstName = formData.get("firstName")?.toString();
+// 	const email = formData.get("email")?.toString();
+// 	const password = formData.get("password")?.toString();
+// 	const supabase = createServerClient();
+// 	const origin = headers().get("origin");
 
-	if (!firstName || !email || !password) {
-		return { error: "Email and password are required" };
-	}
+// 	if (!firstName || !email || !password) {
+// 		return { error: "Email and password are required" };
+// 	}
 
-	const { error } = await supabase.auth.signUp({
-		email,
-		password,
-		options: {
-			emailRedirectTo: `${origin}/auth/callback`,
-			data: {
-				first_name: firstName,
-			},
-		},
-	});
+// 	const { error } = await supabase.auth.signUp({
+// 		email,
+// 		password,
+// 		options: {
+// 			emailRedirectTo: `${origin}/auth/callback`,
+// 			data: {
+// 				first_name: firstName,
+// 			},
+// 		},
+// 	});
 
-	if (error) {
-		console.error(`${error.code} ${error.message}`);
-		return encodedRedirect(
-			"error",
-			"/auth/sign-up",
-			error.code
-				? supabaseAuthErrorCodeToJapaneseMessage[error.code]
-				: error.message,
-		);
-	}
-	return encodedRedirect(
-		"success",
-		"/auth/sign-up",
-		"登録完了しました。メールをご確認ください。",
-	);
-};
+// 	if (error) {
+// 		console.error(`${error.code} ${error.message}`);
+// 		return encodedRedirect(
+// 			"error",
+// 			"/auth/sign-up",
+// 			error.code
+// 				? supabaseAuthErrorCodeToJapaneseMessage[error.code]
+// 				: error.message,
+// 		);
+// 	}
+// 	return encodedRedirect(
+// 		"success",
+// 		"/auth/sign-up",
+// 		"登録完了しました。メールをご確認ください。",
+// 	);
+// };
 
-export const signInAction = async (formData: FormData) => {
-	const email = formData.get("email") as string;
-	const password = formData.get("password") as string;
-	const supabase = createServerClient();
+// export const signInAction = async (formData: FormData) => {
+// 	const email = formData.get("email") as string;
+// 	const password = formData.get("password") as string;
+// 	const supabase = createServerClient();
 
-	const { error } = await supabase.auth.signInWithPassword({
-		email,
-		password,
-	});
+// 	const { error } = await supabase.auth.signInWithPassword({
+// 		email,
+// 		password,
+// 	});
 
-	if (error) {
-		console.error(JSON.stringify(error, null, 2));
-		return encodedRedirect(
-			"error",
-			"/auth/sign-in",
-			"メールアドレスまたはパスワードが間違っています。",
-		);
-	}
+// 	if (error) {
+// 		console.error(JSON.stringify(error, null, 2));
+// 		return encodedRedirect(
+// 			"error",
+// 			"/auth/sign-in",
+// 			"メールアドレスまたはパスワードが間違っています。",
+// 		);
+// 	}
 
-	return redirect("/");
-};
+// 	return redirect("/");
+// };
 
 export const forgotPasswordAction = async (formData: FormData) => {
 	const email = formData.get("email")?.toString();

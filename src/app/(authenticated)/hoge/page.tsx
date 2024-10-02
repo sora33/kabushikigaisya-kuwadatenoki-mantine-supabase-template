@@ -25,10 +25,10 @@ export default async function Page() {
 		data: { user },
 	} = await supabase.auth.getUser();
 
-	const userData = await prisma.user.findUnique({
-		where: { id: user?.id },
-	});
-	console.log("userData", userData);
+	// const userData = await prisma.user.findUnique({
+	// 	where: { id: user?.id },
+	// });
+	// console.log("userData", userData);
 
 	return (
 		<Stack gap="xl">
@@ -44,12 +44,12 @@ export default async function Page() {
 				</Title>
 				<Code block>{JSON.stringify(user, null, 2)}</Code>
 			</Box>
-			<Box>
+			{/* <Box>
 				<Title order={2} mb="md">
 					ユーザーデータ
 				</Title>
 				<Code block>{JSON.stringify(userData, null, 2)}</Code>
-			</Box>
+			</Box> */}
 			<Box>
 				<Title order={2} mb="md">
 					メタデータの更新

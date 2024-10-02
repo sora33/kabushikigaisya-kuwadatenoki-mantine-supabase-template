@@ -1,7 +1,7 @@
 import { Button, Stack, Text, TextInput, Title } from "@mantine/core";
-import Link from "next/link";
 import { forgotPasswordAction } from "~/app/auth/actions";
 import { FormMessage, type Message } from "~/components/modules/form-message";
+import { NextjsAnchor } from "~/components/ui";
 
 export default function ForgotPassword({
 	searchParams,
@@ -11,18 +11,11 @@ export default function ForgotPassword({
 	return (
 		<form>
 			<Stack>
-				<div>
-					<Title order={2}>パスワードリセット</Title>
-					<Text size="sm" c="dimmed">
-						すでにアカウントをお持ちですか？{" "}
-						<Link
-							href="/auth/sign-in"
-							style={{ color: "blue", textDecoration: "underline" }}
-						>
-							ログイン
-						</Link>
-					</Text>
-				</div>
+				<Title order={2}>パスワードリセット</Title>
+				<Text size="sm" c="dimmed">
+					すでにアカウントをお持ちですか？{" "}
+					<NextjsAnchor href="/auth/sign-in">ログイン</NextjsAnchor>
+				</Text>
 				<TextInput
 					label="メールアドレス"
 					type="email"

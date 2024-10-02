@@ -6,21 +6,17 @@ import "@mantine/dates/styles.css";
 import { Notifications } from "@mantine/notifications";
 import "@mantine/notifications/styles.css";
 import "global.css";
-import { Stack } from "@mantine/core";
 import type { Viewport } from "next";
 import type React from "react";
 import { theme } from "theme";
-import { Footer } from "~/components";
-import { Container } from "~/components/modules";
-import { Header } from "~/components/modules/header";
 import { MantineDateProvider } from "~/utils";
-
 export const metadata = {
 	title: {
-		default: "案件名",
-		template: "%s | 案件名",
+		default: "講習会管理アプリ",
+		template: "%s | 講習会管理アプリ",
 	},
-	description: "案件の説明文を入れる",
+	description: "美容関係の講習会管理アプリ",
+	noindex: true,
 };
 
 export const viewport: Viewport = {
@@ -42,13 +38,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				<MantineProvider defaultColorScheme="light" theme={theme}>
 					<MantineDateProvider>
 						<Notifications />
-						<Header />
-						<Container mt="xl" pb="6rem">
-							<Stack gap="sm" flex="1" pt="md">
-								{children}
-							</Stack>
-						</Container>
-						<Footer />
+						{children}
 					</MantineDateProvider>
 				</MantineProvider>
 			</body>
