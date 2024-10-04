@@ -1,4 +1,5 @@
 import { Alert } from "@mantine/core";
+import React from "react";
 
 export type Message =
 	| { success: string }
@@ -7,7 +8,7 @@ export type Message =
 
 export function FormMessage({ message }: { message: Message }) {
 	return (
-		<>
+		<React.Fragment>
 			{"success" in message && (
 				<Alert variant="light" color="green" title="成功">
 					{message.success}
@@ -23,6 +24,6 @@ export function FormMessage({ message }: { message: Message }) {
 					{message.message}
 				</Alert>
 			)}
-		</>
+		</React.Fragment>
 	);
 }

@@ -8,7 +8,6 @@ import { type SignUpFormSchema, signUpFormSchema } from "./schema";
 export const signUpAction = async (data: SignUpFormSchema) => {
 	const supabase = createServerClient();
 	const origin = headers().get("origin");
-	console.log(origin);
 
 	// バリデーション
 	const result = signUpFormSchema.safeParse(data);

@@ -1,55 +1,34 @@
 "use client";
 
-import { Box, Divider, Flex, NavLink, Stack } from "@mantine/core";
-import {
-	IconCalendar,
-	IconChartBar,
-	IconUser,
-	IconUsers,
-} from "@tabler/icons-react";
+import { Box, Flex, NavLink, Stack } from "@mantine/core";
+import { IconCalendar, IconUser, IconUsers } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useQueryState } from "nuqs";
-import { NextjsAnchor } from "~/components/ui";
 
 const data = [
 	{
-		link: "/seminar",
-		label: "講習会一覧",
+		link: "/dashboard",
+		label: "ダッシュボード",
 		icon: IconCalendar,
 		isAdmin: true,
-		isOrganizer: true,
 	},
 	{
-		link: "/report",
-		label: "集計",
-		icon: IconChartBar,
-		isAdmin: true,
-		isOrganizer: false,
-	},
-	{
-		link: "/users",
-		label: "アカウント管理",
+		link: "/account",
+		label: "アカウント",
 		icon: IconUsers,
 		isAdmin: true,
-		isOrganizer: false,
 	},
 	{
-		link: "/mypage",
-		label: "マイページ",
+		link: "/profile",
+		label: "プロフィール",
 		icon: IconUser,
 		isAdmin: false,
-		isOrganizer: true,
 	},
 ];
 
 export const Sidebar = () => {
 	const pathname = usePathname();
-	const isActive = (link: string) => pathname.startsWith(link);
-	const [seminarType, setSeminarType] = useQueryState("seminarType", {
-		parse: (value) => value || "all",
-		serialize: (value) => value,
-	});
+	const isActive = (link: string) => pathname?.startsWith(link);
 
 	return (
 		<Flex direction="column" h="100%">
@@ -59,7 +38,6 @@ export const Sidebar = () => {
 						return (
 							<NavLink
 								component={Link}
-								// href={`${item.link}?seminarType=${seminarType}`}
 								href={`${item.link}`}
 								key={item.label}
 								label={item.label}
@@ -75,11 +53,11 @@ export const Sidebar = () => {
 					})}
 				</Stack>
 			</Box>
-			<Divider my="md" w="100%" />
+			{/* <Divider my="md" w="100%" />
 			<Stack gap="xs">
 				{[
-					{ href: "/download", label: "ダウンロード各種" },
-					{ href: "/notice", label: "講習会注意事項" },
+					{ href: "/download", label: "ダウンロード資料" },
+					{ href: "/notice", label: "お知らせ" },
 				].map((link) => (
 					<NextjsAnchor
 						key={link.href}
@@ -90,7 +68,7 @@ export const Sidebar = () => {
 						{link.label}
 					</NextjsAnchor>
 				))}
-			</Stack>
+			</Stack> */}
 		</Flex>
 	);
 };

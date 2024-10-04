@@ -12,10 +12,10 @@ import { theme } from "theme";
 import { MantineDateProvider } from "~/utils";
 export const metadata = {
 	title: {
-		default: "講習会管理アプリ",
-		template: "%s | 講習会管理アプリ",
+		default: process.env.NEXT_PUBLIC_APP_TITLE,
+		template: `%s | ${process.env.NEXT_PUBLIC_APP_TITLE}`,
 	},
-	description: "美容関係の講習会管理アプリ",
+	description: process.env.NEXT_PUBLIC_APP_DESCRIPTION,
 	noindex: true,
 };
 

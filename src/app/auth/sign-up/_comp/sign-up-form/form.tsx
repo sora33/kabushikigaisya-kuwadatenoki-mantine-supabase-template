@@ -19,6 +19,7 @@ export const SignUpForm = () => {
 	const [isPending, startTransition] = useTransition();
 	const form = useForm<SignUpFormSchema>({
 		initialValues: {
+			id: "",
 			email: "",
 			password: "",
 			confirmPassword: "",

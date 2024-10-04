@@ -8,7 +8,7 @@ import { userSchema } from "~/schema/user-schema";
 
 export const signUpFormSchema = userSchema
 	.extend({
-		email: emailValidation,
+		email: emailValidation.describe("メールアドレス"),
 		password: passwordValidation,
 		confirmPassword: requiredValidation(50).describe("確認用パスワード"),
 	})

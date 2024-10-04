@@ -1,6 +1,11 @@
+import type { User } from "@supabase/supabase-js";
 import { createServerClient } from "~/lib/supabase";
 
-export async function getCurrentUser() {
+export async function getCurrentUser(): Promise<{
+	isAdmin: boolean;
+	isSignedIn: boolean;
+	currentUser: User | null;
+}> {
 	const supabase = createServerClient();
 	const {
 		data: { user },
@@ -8,7 +13,7 @@ export async function getCurrentUser() {
 
 	const isAdmin = user?.app_metadata.role === "admin";
 	const isSignedIn = !!user;
-	const currentUser = user;
+	const currentUser: User | null = user;
 
 	return { isAdmin, isSignedIn, currentUser };
 }

@@ -15,21 +15,11 @@ datasource db {
 }
 
 model User {
-  id            String    @id @unique @map("id") @db.Uuid()
-  firstName     String?   @map("first_name")
-  lastName      String?   @map("last_name")
-  firstNameKana String?   @map("first_name_kana")
-  lastNameKana  String?   @map("last_name_kana")
-  gender        String?   @map("gender")
-  phoneNumber   String?   @map("phone_number")
-  birthDate     Int?      @map("birth_date")
-  postalCode    String?   @map("postal_code")
-  prefecture    String?   @map("prefecture")
-  address       String?   @map("address")
-  email         String?   @map("email")
-  role          Role?     @map("role")
-  createdAt     DateTime? @default(now()) @map("created_at")
-  updatedAt     DateTime? @updatedAt @map("updated_at")
+  id        String    @id @unique @map("id") @db.Uuid()
+  name      String    @map("name")
+  email     String    @unique @map("email")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
 
   @@map("user")
 }
