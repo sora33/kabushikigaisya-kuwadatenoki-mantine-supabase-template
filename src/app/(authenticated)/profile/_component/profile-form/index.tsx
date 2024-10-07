@@ -30,9 +30,10 @@ export const ProfileForm = ({ currentUser }: Props) => {
 				notifications.show({
 					message: "プロフィールを更新しました。",
 				});
-			} catch (error) {
+			} catch (error: unknown) {
 				notifications.show({
-					message: "プロフィールの更新に失敗しました。",
+					message:
+						error instanceof Error ? error.message : "エラーが発生しました。",
 					color: "red",
 				});
 				console.error(error);

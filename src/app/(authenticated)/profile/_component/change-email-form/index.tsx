@@ -15,7 +15,8 @@ export const ChangeEmailForm = ({ email }: Props) => {
 	const [isPending, startTransition] = useTransition();
 	const form = useForm<ChangeEmailFormSchema>({
 		initialValues: {
-			email,
+			email: email,
+			changeEmail: "",
 		},
 		validate: zodResolver(changeEmailFormSchema),
 	});
@@ -29,9 +30,10 @@ export const ChangeEmailForm = ({ email }: Props) => {
 				notifications.show({
 					message: "新しいメールアドレス宛に、確認メールを送信しました。",
 				});
-			} catch (error) {
+			} catch (error: unknown) {
 				notifications.show({
-					message: "メールアドレスの更新に失敗しました。",
+					message:
+						error instanceof Error ? error.message : "エラーが発生しました。",
 					color: "red",
 				});
 				console.error(error);
@@ -52,9 +54,9 @@ export const ChangeEmailForm = ({ email }: Props) => {
 				<TextInput
 					label="新しいメールアドレス"
 					description="フォームに入力したメールアドレスに、確認メールが送信されます。"
-					name="email"
+					name="changeEmail"
 					required
-					{...form.getInputProps("email")}
+					{...form.getInputProps("changeEmail")}
 				/>
 				<Button type="submit" loading={isPending} disabled={isPending}>
 					メールアドレスを変更する
