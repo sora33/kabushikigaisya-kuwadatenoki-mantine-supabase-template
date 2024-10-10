@@ -18,7 +18,7 @@ export const updateProfileAction = async (data: ChangeEmailFormSchema) => {
 	const supabase = createServerClient();
 
 	const { error } = await supabase.auth.updateUser({
-		email: data.email,
+		email: data.changeEmail,
 	});
 
 	if (error) {
